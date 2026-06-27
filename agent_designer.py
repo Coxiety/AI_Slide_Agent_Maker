@@ -20,7 +20,7 @@ import os
 import re
 
 from schema import Deck
-from image_fetcher import ImageFetcher
+from comfyui_fetcher import ComfyUIFetcher
 from slide_generator import SlideGenerator
 import llm
 
@@ -30,7 +30,7 @@ class DesignerAgent:
         self.use_images = use_images
         self.model_name = model_name
         self.api_url = api_url
-        self.fetcher = ImageFetcher()
+        self.fetcher = ComfyUIFetcher()
         self.sg = SlideGenerator()
 
     # ── API công khai ────────────────────────────────────────────────────────
@@ -56,11 +56,31 @@ class DesignerAgent:
             title_img = self.fetcher.fetch(tq)
         self.sg.add_title_slide(deck.title, deck.subtitle, title_img)
 
-        # 2) Các slide nội dung ------------------------------------------------
+        # 2) Các slide nội dung (Tối ưu đa luồng) ------------------------------
         total = len(deck.slides)
-        for idx, slide in enumerate(deck.slides, 1):
-            emit(f"[Designer] Slide {idx}/{total}: {slide.title}")
+        emit(f"[Designer] Đang nạp hàng chờ sinh ảnh cho {total} slide lên ComfyUI...")
+
+        import concurrent.futures
+
+        def process_slide(slide_info):
+            idx, slide = slide_info
+            emit(f"    [Thread] Bắt đầu xử lý Slide {idx}/{total}: {slide.title}")
             img = self._decide_image(slide, deck.title, emit)
+            return slide, img
+
+        slide_infos = list(enumerate(deck.slides, 1))
+        processed_slides = []
+        
+        # Chạy đồng thời LLM Keyword và ComfyUI WebSocket
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            # map trả về kết quả theo ĐÚNG THỨ TỰ đầu vào
+            results = executor.map(process_slide, slide_infos)
+            for idx, (slide, img) in enumerate(results, 1):
+                emit(f"[Designer] Đã có ảnh Slide {idx}/{total}: {slide.title}")
+                processed_slides.append((slide, img))
+
+        # 3) Lắp ráp ảnh vào PPTX tuần tự để tránh lỗi file
+        for idx, (slide, img) in enumerate(processed_slides, 1):
             self.sg.add_content_slide(
                 title=slide.title,
                 bullet_points=slide.points,

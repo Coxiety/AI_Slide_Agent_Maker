@@ -3,10 +3,10 @@
     "subtitle": "Bài thuyết trình do AI Agent biên soạn",
     "briefs": [
         {
-            "title": "Giới thiệu tổng quan về Viterbi",
+            "title": "Tổng quan về xử lý tín hiệu và truyền thông",
             "role": "intro",
-            "focus": "Trình bày rõ về: Giới thiệu tổng quan về Viterbi",
-            "image_query": "introduction viterbi algorithm concept"
+            "focus": "Trình bày rõ về: Tổng quan về xử lý tín hiệu và truyền thông",
+            "image_query": "viterbi introduction signal processing communication"
         },
         {
             "title": "Chương trình nghị sự",
@@ -15,46 +15,46 @@
             "image_query": "abstract structure diagram viterbi"
         },
         {
-            "title": "Cơ chế phân tích cú pháp của Viterbi",
+            "title": "Cơ chế phân tích mã tự động",
             "role": "analysis",
-            "focus": "Trình bày rõ về: Cơ chế phân tích cú pháp của Viterbi",
-            "image_query": "viterbi decoding mechanism flowchart"
+            "focus": "Trình bày rõ về: Cơ chế phân tích mã tự động",
+            "image_query": "viterbi automatic decoding diagram algorithm"
         },
         {
-            "title": "Ứng dụng của Viterbi trong xử lý ngôn ngữ tự nhiên",
+            "title": "Ứng dụng chính của thuật toán Viterbi",
             "role": "application",
-            "focus": "Trình bày rõ về: Ứng dụng của Viterbi trong xử lý ngôn ngữ tự nhiên",
-            "image_query": "viterbi natural language processing application infographic"
+            "focus": "Trình bày rõ về: Ứng dụng chính của thuật toán Viterbi",
+            "image_query": "viterbi decoding comparison infographic"
+        },
+        {
+            "title": "Cơ chế vận hành của thuật toán Viterbi",
+            "role": "analysis",
+            "focus": "Trình bày rõ về: Cơ chế vận hành của thuật toán Viterbi",
+            "image_query": "viterbi algorithm structure flowchart"
+        },
+        {
+            "title": "Số liệu quan trọng liên quan đến hiệu suất",
+            "role": "analysis",
+            "focus": "Trình bày rõ về: Số liệu quan trọng liên quan đến hiệu suất",
+            "image_query": "viterbi performance metrics diagram"
         },
         {
             "title": "So sánh với các thuật toán khác",
             "role": "analysis",
             "focus": "Trình bày rõ về: So sánh với các thuật toán khác",
-            "image_query": "viterbi algorithm comparison diagram"
+            "image_query": "viterbi vs other algorithms comparison infographic"
         },
         {
-            "title": "Cấu trúc cơ bản của thuật toán Viterbi",
-            "role": "analysis",
-            "focus": "Trình bày rõ về: Cấu trúc cơ bản của thuật toán Viterbi",
-            "image_query": "viterbi algorithm structure vector"
-        },
-        {
-            "title": "Số liệu quan trọng và ứng dụng thực tế",
+            "title": "Ứng dụng thực tế của thuật toán Viterbi",
             "role": "application",
-            "focus": "Trình bày rõ về: Số liệu quan trọng và ứng dụng thực tế",
-            "image_query": "viterbi decoding comparison statistics"
+            "focus": "Trình bày rõ về: Ứng dụng thực tế của thuật toán Viterbi",
+            "image_query": "viterbi application case study infographic"
         },
         {
-            "title": "Tính mở rộng và cải tiến của Viterbi",
-            "role": "analysis",
-            "focus": "Trình bày rõ về: Tính mở rộng và cải tiến của Viterbi",
-            "image_query": "viterbi algorithm extension mechanism"
-        },
-        {
-            "title": "Kết luận về tầm quan trọng của Viterbi",
+            "title": "Kết luận",
             "role": "conclusion",
-            "focus": "Trình bày rõ về: Kết luận về tầm quan trọng của Viterbi",
-            "image_query": "conclusion viterbi algorithm impact"
+            "focus": "Trình bày rõ về: Kết luận",
+            "image_query": "viterbi conclusion neural network computer"
         }
     ]
 }
